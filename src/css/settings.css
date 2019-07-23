@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "PT Sans";
+  src: url("/fonts/PT_Sans-Web-Regular.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DIN Condensed Bold";
+  src: url("/fonts/DIN_Condensed_Bold.ttf") format("truetype");
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  background-color: #EFF0F3;
+  font-family: "PT Sans";
+  min-width: 319px;
+}
