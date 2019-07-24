@@ -5,10 +5,11 @@ import axios from 'axios';
 
 import classes from './Header.module.css';
 
-export default class Header extends React.Component {
+class Geolacation extends React.Component {
   state = {
     geo: []
-  }
+  };
+
   componentDidMount() {
     axios.get(`/!json/geo/geo.json`)
       .then(res => {
@@ -17,34 +18,7 @@ export default class Header extends React.Component {
       })
   }
 
-  PASS(e) {
-    let child = e.target;
-    let headerGeolocationButton = document.querySelector( ".header__geolocation-button" );
-    let headerGeolocationBlock  = document.querySelector(".header__geolocation-block");
-    const el = document.querySelectorAll( ".header__geolocation-item" );
-    for (var k in el) {
-      if ( typeof el[k] == "object" ) { 
-        if ( el[k].classList.contains( "header__geolocation-item--active" ) ) {
-          el[k].classList.remove( "header__geolocation-item--active" );
-        }
-      }
-    }
-    if ( child.tagName == "LI" ) {
-      child.classList.add( "header__geolocation-item--active" );
-      let txt = child.children[1].innerText;
-      headerGeolocationButton.innerText = txt;
-      headerGeolocationButton.classList.toggle( "header__geolocation-button--inverted" );
-      headerGeolocationBlock.classList.toggle( "header__geolocation-block--active" );
-    } else {
-      child.closest( ".header__geolocation-item" ).classList.add( "header__geolocation-item--active" );
-      let txt = child.innerText;
-      headerGeolocationButton.innerText = txt;
-      headerGeolocationButton.classList.toggle( "header__geolocation-button--inverted" );
-      headerGeolocationBlock.classList.toggle( "header__geolocation-block--active" );
-    }
-  }
-
-  geo() {
+  render() {
     let doubled;
     let abc = "";
     let change = "";
@@ -87,15 +61,44 @@ export default class Header extends React.Component {
       </ul>
     )
   }
+}
+
+export default class Header extends React.Component {
+  PASS(e) {
+    let child = e.target;
+    let headerGeolocationButton = document.querySelector( `.${classes["header__geolocation-button"]}` );
+    let headerGeolocationBlock  = document.querySelector( `.${classes["header__geolocation-block"]}` );
+    const el = document.querySelectorAll( `.${classes["header__geolocation-item"]}` );
+    for (var k in el) {
+      if ( typeof el[k] == "object" ) { 
+        if ( el[k].classList.contains( classes["header__geolocation-item--active"] ) ) {
+          el[k].classList.remove( classes["header__geolocation-item--active"] );
+        }
+      }
+    }
+    if ( child.tagName == "LI" ) {
+      child.classList.add( classes["header__geolocation-item--active"] );
+      let txt = child.children[1].innerText;
+      headerGeolocationButton.innerText = txt;
+      headerGeolocationButton.classList.toggle( classes["header__geolocation-button--inverted"] );
+      headerGeolocationBlock.classList.toggle( classes["header__geolocation-block--active"] );
+    } else {
+      child.closest( `.${classes["header__geolocation-item"]}` ).classList.add( classes["header__geolocation-item--active"] );
+      let txt = child.innerText;
+      headerGeolocationButton.innerText = txt;
+      headerGeolocationButton.classList.toggle( classes["header__geolocation-button--inverted"] );
+      headerGeolocationBlock.classList.toggle( classes["header__geolocation-block--active"] );
+    }
+  }
 
   DISPLAY() {
-    let headerGeolocationButton = document.querySelector(".header__geolocation-button");
-    headerGeolocationButton.nextSibling.classList.toggle( "header__geolocation-block--active" );
-    headerGeolocationButton.classList.toggle( "header__geolocation-button--inverted" );
+    let headerGeolocationButton = document.querySelector( `.${classes["header__geolocation-button"]}` );
+    headerGeolocationButton.nextSibling.classList.toggle( classes["header__geolocation-block--active"] );
+    headerGeolocationButton.classList.toggle( classes["header__geolocation-button--inverted"] );
   }
 
   render() {
-		return (
+    return (
 			<div className="header">
         <div className="container">
           <div className={classes.header__wrap}>
@@ -117,7 +120,7 @@ export default class Header extends React.Component {
                     <div className={classes["header__geolocation"]}>
                       <a className={classes["header__geolocation-button"]} onClick={this.DISPLAY} href="#">Алтайский край</a>  
                       <div className={classes["header__geolocation-block"]} onClick={this.PASS}>
-                        {this.geo()}   
+                        <Geolacation />   
                       </div>
                     </div>
                   </div>
