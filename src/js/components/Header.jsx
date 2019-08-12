@@ -11,11 +11,11 @@ class Geolacation extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(`/!json/geo/geo.json`)
-      .then(res => {
-        const geo = res.data;
-        this.setState({ geo });
-      })
+    // axios.get(`/!json/geo/geo.json`)
+    //   .then(res => {
+    //     const geo = res.data;
+    //     this.setState({ geo });
+    //   })
   }
 
   render() {
@@ -57,7 +57,6 @@ class Geolacation extends React.Component {
     }
     return (
       <ul className={classes["header__geolocation-list"]}>
-        {doubled}
       </ul>
     )
   }
@@ -118,7 +117,7 @@ export default class Header extends React.Component {
                 <div className="row justify-content-between">
                   <div className="col-lg-8">
                     <div className={classes["header__geolocation"]}>
-                      <a className={classes["header__geolocation-button"]} onClick={this.DISPLAY} href="#">Алтайский край</a>  
+                      <a className={classes["header__geolocation-button"]} href="#">Алтайский край</a>  
                       <div className={classes["header__geolocation-block"]} onClick={this.PASS}>
                         <Geolacation />   
                       </div>

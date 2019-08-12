@@ -8,13 +8,18 @@ import Message from "./Message"
 
 export default class Content extends React.Component {
     render() {
+        
         return(
             <div className="main">
                 <div className="container">
                     <div className={classes["main--white"]}>
-                        <Route component={Menu} />
-
-                        <Route path="/messages" component={Message} />
+                        <Route render={ () => <Menu menu={this.props.stateContent.menuList} />} />
+                        <Route path="/messages" render={ 
+                            () => <Message 
+                            message={ this.props.stateContent.messageList }
+                            addComment={ this.props.addComment }
+                            commentText={ this.props.stateContent.commentText }
+                            updateComment={ this.props.updateComment } /> } />
                     </div>
                 </div>
             </div>

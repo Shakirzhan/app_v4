@@ -164,8 +164,13 @@
     background-repeat: no-repeat;
     -webkit-background-size: 24px;
     background-size: 24px;
-    width: 24px;
+    width: 44px;
     height: 24px;
     display: block;
     margin-right: 10px;
+}
+
+.message-submit:hover {
+    background-color: #eee;
+    box-shadow: 5px 5px 5px #eee;
 }

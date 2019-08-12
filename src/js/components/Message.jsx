@@ -39,7 +39,27 @@ class MessageItem extends React.Component {
 }
 
 export default class Message extends React.Component {
-    render() {
+    constructor(props) {
+        super(props);
+        this.newMessage = React.createRef();
+        this.addMessage = this.addMessage.bind(this);
+        this.onMessageChange = this.onMessageChange.bind(this);
+      }
+    addMessage(e) {
+        e.preventDefault();
+        let txt = this.newMessage.current.value;
+        this.props.addComment(txt);
+    }
+
+    onMessageChange() {
+        let txt = this.newMessage.current.value;
+        this.props.updateComment(txt);
+    }
+
+    render() { 
+        let doubled = this.props.message.map( (el) => 
+           <MessageItem name={el.name} body={el.body} key={el.id} /> 
+        );
         return(
             <div className={classes["posts-container"]}>
                 <div className={`${classes["posts-left"]} ${classes["posts-all"]}`}>
@@ -49,12 +69,14 @@ export default class Message extends React.Component {
                     </ul>
                 </div>
                 <div className={`${classes["posts-right"]} ${classes["posts-all"]}`}>
-                    <MessageItem name="Вика" body="Так переменная.класс?" />
-                    <MessageItem name="Саша" body="Да так!)" />
-                    <MessageItem name="Вика" body="Спасибо!" />
+                    { doubled }
                     <div className={classes["message-input"]}>
-                        <input type="text" placeholder="Напишите сообщение…" />
-                            <a className={classes["message-submit"]} href="#">Отправить</a>
+                        <input type="text"
+                               placeholder="Напишите сообщение…"
+                               ref={ this.newMessage }
+                               value={ this.props.commentText }
+                               onChange={ this.onMessageChange } />
+                            <a className={classes["message-submit"]} href="#" onClick={ this.addMessage }>Отправить</a>
                     </div>
                 </div>
             </div>

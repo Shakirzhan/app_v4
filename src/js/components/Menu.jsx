@@ -5,26 +5,24 @@ import axios from 'axios';
 import classes from './Menu.module.css';
 
 export default class Menu extends React.Component {
-    state = {
-        menu: []
-    }
     componentDidMount() {
-        axios.get(`/!json/menu/menu.json`)
-            .then(res => {
-                const menu = res.data;
-                this.setState({ menu });
-            })
+        // axios.get(`/!json/menu/menu.json`)
+        //     .then(res => {
+        //         const menu = res.data;
+        //         this.setState({ menu });
+        //     })
     }
 
+
+
     render() {
-        let doubled;
-        if ( this.state.menu ) {
-            doubled = this.state.menu.map((it) =>
-                <NavLink exact key={`${it.id}`} className={`${classes["main-tab__item"]} col-lg-3`} to={`${it.url}`} activeClassName={classes["main-tab__item--active"]}>
-                    {`${it.name_url}`}
-                </NavLink>
-            );
-        }
+        let data = this.props.menu;
+        let doubled = data.map((it) =>
+            <NavLink exact key={`${it.id}`} className={`${classes["main-tab__item"]} col-lg-3`} to={`${it.url}`} activeClassName={classes["main-tab__item--active"]}>
+                {`${it.name_url}`}
+            </NavLink>
+        );
+    
 
         return (
             <div className={`${classes["main-tab"]} row`}>

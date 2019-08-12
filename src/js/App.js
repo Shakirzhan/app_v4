@@ -10,11 +10,14 @@ import "../css/settings.css"
 export default class Application extends React.Component {
 
   render() {
+  	
     // новый мастер
     return(
       <Router>
         <Header />
-        <Content />
+        <Content stateContent={this.props.state}
+                 addComment={ this.props.addComment }
+                 updateComment={ this.props.updateComment } />
       </Router>
     )
   }
