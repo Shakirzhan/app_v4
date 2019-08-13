@@ -16,8 +16,7 @@ export default class Application extends React.Component {
       <Router>
         <Header />
         <Content stateContent={this.props.state}
-                 addComment={ this.props.addComment }
-                 updateComment={ this.props.updateComment } />
+                 dispatch={ this.props.dispatch } />
       </Router>
     )
   }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
 
 import classes from './Message.module.css';
+import {addCommentActionCreator, updateNewMessageActionCreater} from "../../data/state";
 
 class User extends React.Component {
     path = `/messages/${this.props.id}`;
@@ -48,12 +49,17 @@ export default class Message extends React.Component {
     addMessage(e) {
         e.preventDefault();
         let txt = this.newMessage.current.value;
-        this.props.addComment(txt);
+        // this.props.addComment(txt);
+        this.props.dispatch( addCommentActionCreator() );
     }
 
     onMessageChange() {
         let txt = this.newMessage.current.value;
-        this.props.updateComment(txt);
+        // this.props.updateComment(txt);
+
+
+        let param = updateNewMessageActionCreater(txt);
+        this.props.dispatch( param );
     }
 
     render() { 

@@ -17,9 +17,8 @@ export default class Content extends React.Component {
                         <Route path="/messages" render={ 
                             () => <Message 
                             message={ this.props.stateContent.messageList }
-                            addComment={ this.props.addComment }
-                            commentText={ this.props.stateContent.commentText }
-                            updateComment={ this.props.updateComment } /> } />
+                            dispatch={ this.props.dispatch }
+                            commentText={ this.props.stateContent.commentText } /> } />
                     </div>
                 </div>
             </div>

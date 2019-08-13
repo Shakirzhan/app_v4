@@ -1,5 +1,17 @@
 import React from 'react';
-import state from './data/state';
-import {renderEntireTree} from './render';
+import ReactDOM from 'react-dom';
+import store from './data/state';
+import './css/index.css';
+import App from './js/App';
 
-renderEntireTree(state);
+let renderEntireTree = () => {
+    ReactDOM.render(
+        <App state={store.getState()}
+             dispatch={ store.dispatch.bind(store) } />,
+        document.getElementById('root')
+    );
+}
+
+renderEntireTree(store.getState());
+
+store.subscribe(renderEntireTree);

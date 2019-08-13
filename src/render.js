@@ -1,3 +1,4 @@
+/** delete
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
@@ -12,3 +13,5 @@ export let renderEntireTree = (state) => {
         document.getElementById('root')
     );
 }
+
+delete
