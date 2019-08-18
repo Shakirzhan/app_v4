@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
 
 import classes from './Message.module.css';
-import {addCommentActionCreator, updateNewMessageActionCreater} from "../../data/state";
+import {addCommentActionCreator, updateNewMessageActionCreater} from "../../data/messageList";
 
 class User extends React.Component {
     path = `/messages/${this.props.id}`;
@@ -63,7 +63,7 @@ export default class Message extends React.Component {
     }
 
     render() { 
-        let doubled = this.props.message.map( (el) => 
+        let doubled = this.props.message.list.map( (el) =>
            <MessageItem name={el.name} body={el.body} key={el.id} /> 
         );
         return(

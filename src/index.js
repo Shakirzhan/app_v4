@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import store from './data/state';
+import store from './data/store';
 import './css/index.css';
 import App from './js/App';
 

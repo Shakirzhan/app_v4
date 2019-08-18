@@ -18,7 +18,7 @@ export default class Content extends React.Component {
                             () => <Message 
                             message={ this.props.stateContent.messageList }
                             dispatch={ this.props.dispatch }
-                            commentText={ this.props.stateContent.commentText } /> } />
+                            commentText={ this.props.stateContent.messageList.commentText } /> } />
                     </div>
                 </div>
             </div>
